@@ -21,7 +21,7 @@ spec:
           claimName: jenkins-pvc
       containers:
       - name: jenkins
-        image: www.cyharbor.com/jenkins/jenkins_jenkins:2.452.3-lts-jdk17
+        image: jenkins/jenkins:jdk17 
         volumeMounts:
         - name: jenkins-store
           mountPath: /var/jenkins_home/
