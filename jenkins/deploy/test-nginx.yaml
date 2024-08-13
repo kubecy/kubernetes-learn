@@ -1,0 +1,58 @@
+# nginx-deployment.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  namespace: default
+  labels:
+    app: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    lb.kubesphere.io/v1alpha1: openelb
+    protocol.openelb.kubesphere.io/v1alpha1: layer2
+    eip.openelb.kubesphere.io/v1alpha2: eip-pool
+  name: nginx
+  namespace: default
+  labels:
+    app: nginx
+spec:
+  selector:
+    app: nginx
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    lb.kubesphere.io/v1alpha1: openelb
+    protocol.openelb.kubesphere.io/v1alpha1: layer2
+    eip.openelb.kubesphere.io/v1alpha2: eip-pool
+  name: nginx-ingress
+  namespace: default
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: www.cynginx.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx
+            port:
+              number: 80
+
