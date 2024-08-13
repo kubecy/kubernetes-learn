@@ -1,7 +1,5 @@
 # Jenkins部署
 
-+++
-
 deploy目录中的配置文件，用于将Jenkins部署于Kubernetes集群之上，它依赖于：
 
 1. Kubernetes集群上部署有基于nfs-csi的存储服务，且创建了名称为nfs-csi的StorageClass资源。
