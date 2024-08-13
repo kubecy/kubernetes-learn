@@ -25,7 +25,9 @@ root@A-YYYPT-K99-M01 /gitee/kubernetes-learn/jenkins/deploy:~ # tree
 kubectl apply -f deploy/
 ~~~
 
+![image-20240813220337972](./README.assets/image-20240813220337972.png)
 
+![image-20240813220238332](./README.assets/image-20240813220238332.png)
 
 
 
