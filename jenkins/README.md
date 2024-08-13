@@ -22,7 +22,9 @@ root@A-YYYPT-K99-M01 /gitee/kubernetes-learn/jenkins/deploy:~ # tree
 ### 部署命令
 
 ~~~shell
-kubectl apply -f deploy/
+root@A-YYYPT-K99-M01 /github/kubernetes-learn/jenkins/deploy:~ # kubectl apply  -f ../deploy/
+
+root@A-YYYPT-K99-M01 /github/kubernetes-learn/jenkins/deploy:~ # kubectl  get  all,ingress,pvc -n jenkins 
 ~~~
 
 ![image-20240813220337972](./README.assets/image-20240813220337972.png)
