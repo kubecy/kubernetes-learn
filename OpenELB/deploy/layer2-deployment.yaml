@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: layer2-openelb
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: layer2-openelb
+  template:
+    metadata:
+      labels:
+        app: layer2-openelb
+    spec:
+      containers:
+        - image: luksa/kubia
+          name: kubia
+          ports:
+            - containerPort: 8080
